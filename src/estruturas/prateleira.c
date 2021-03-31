@@ -20,6 +20,7 @@
  */
 PUBLIC void prateleira_setup(void)
 {
+
 	/* Complemente se precisar. */
 }
 
@@ -65,7 +66,10 @@ PUBLIC void prateleira_cleanup(void)
  */
 PUBLIC void prateleira_pega_equipamentos(equipamentos_t * equipamentos)
 {
-	assert(equipamentos);
+	assert(equipamentos);	// verifica existencia do obj
+	
+	// colete -- 
+	equipamentos.colete--;
 
 	/* Complemente se precisar. */
 }
@@ -88,6 +92,8 @@ PUBLIC void prateleira_pega_equipamentos(equipamentos_t * equipamentos)
 PUBLIC void prateleira_libera_equipamentos(equipamentos_t * equipamentos)
 {
 	assert(equipamentos);
+
+	equipamentos.colete ++;
 
 	/* Complemente se precisar. */
 }

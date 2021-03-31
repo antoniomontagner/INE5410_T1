@@ -18,6 +18,7 @@
 PUBLIC void arranjo_iniciar(arranjo_t * arranjo, int capacidade)
 {
 	/* Implemente se for usar. */
+	arranjo.capacidade = capacidade;
 }
 
 /*============================================================================*
@@ -32,6 +33,8 @@ PUBLIC void arranjo_iniciar(arranjo_t * arranjo, int capacidade)
 PUBLIC void arranjo_destruir(arranjo_t * arranjo)
 {
 	/* Implemente se for usar. */
+	delete(arranjo.valor)
+	arranjo.capacidade = 0;
 }
 
 /*============================================================================*
@@ -47,6 +50,11 @@ PUBLIC void arranjo_destruir(arranjo_t * arranjo)
 PUBLIC void arranjo_colocar(arranjo_t * arranjo, void * elemento)
 {
 	/* Implemente se for usar. */
+	if (arranjo.arranjo_tamanho() == arranjo.capacidade){
+		return NULL;
+	} else {
+		arranjo.valor = elemento;
+	}
 }
 
 /*============================================================================*
@@ -64,7 +72,11 @@ PUBLIC void arranjo_colocar(arranjo_t * arranjo, void * elemento)
 PUBLIC void * arranjo_retirar(arranjo_t * arranjo)
 {
 	void * elemento = NULL;
-
+	if ( arranjo_vazio() ){
+		return NULL;
+	} else {
+		elemento = arranjo.valor;
+	}
 	/* Implemente se for usar. */
 
     return elemento;
@@ -82,6 +94,11 @@ PUBLIC void * arranjo_retirar(arranjo_t * arranjo)
  */
 PUBLIC void arranjo_remover(arranjo_t * arranjo, void * elemento)
 {
+	if ( arranjo_vazio() ){
+		return NULL;
+	} else {
+		arranjo.arranjo_retirar;
+	}
 	/* Implemente se for usar. */
 }
 
@@ -99,7 +116,9 @@ PUBLIC void arranjo_remover(arranjo_t * arranjo, void * elemento)
 PUBLIC int arranjo_vazio(arranjo_t * arranjo)
 {
 	/* Implemente se for usar. */
-
+	if (arranjo.arranjo_tamanho() == 0 ){
+		return 1;
+	}
     return (false);
 }
 
@@ -117,7 +136,14 @@ PUBLIC int arranjo_vazio(arranjo_t * arranjo)
 PUBLIC int arranjo_tamanho(arranjo_t * arranjo)
 {
 	/* Implemente se for usar. */
-
-	return (0);
+	int cont = 0;
+	head = arranjo.valor;
+    struct arranjo_t* current = head;
+    while (current != NULL)
+    {
+        cont++;
+        current = current->next;
+    }
+    return cont;
 }
 

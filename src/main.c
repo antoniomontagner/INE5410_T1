@@ -45,20 +45,28 @@ int main(int argc, char* argv[])
 	partida_setup();
 
 	gerente_setup();
+	pthread_create(&tids[1], NULL, gerente_fn,  NULL);	// --
+
 	limpador_setup();
+	pthread_create(&tids[0], NULL, limpador_fn, NULL);	// --
+
+	pthread_create(&tids[2], NULL, porteiro_fn, NULL);	// --
 	porteiro_setup();
 
-		pthread_create(&tids[0], NULL, limpador_fn, NULL);
-		pthread_create(&tids[1], NULL, gerente_fn,  NULL);
-		pthread_create(&tids[2], NULL, porteiro_fn, NULL);
-
-		for (int i = 0; i < 3; ++i)
-			pthread_join(tids[i], NULL);
+//		pthread_create(&tids[0], NULL, limpador_fn, NULL);
+//		pthread_create(&tids[1], NULL, gerente_fn,  NULL);
+//		pthread_create(&tids[2], NULL, porteiro_fn, NULL);
+//
+//		for (int i = 0; i < 3; ++i)
+//			pthread_join(tids[i], NULL);
 
 	porteiro_cleanup();
 	limpador_cleanup();
 	gerente_cleanup();
 
+	for (int i = 0; i < 3; ++i)	// --
+		pthread_join(tids[i], NULL);
+	
 	partida_cleanup();
 	prateleira_cleanup();
 

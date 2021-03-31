@@ -241,7 +241,9 @@ PRIVATE void jogador_sai_equipe(jogador_t * jogador)
 {
 	plog("[jogador %d] Libera vaga.\n", jogador->id);
 
-	/* Saia da equipe. */
+	/* Saia da equipe. */	
+	
+	 // equipe
 }
 
 /*============================================================================*

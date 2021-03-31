@@ -18,6 +18,9 @@
 		 * usados (fila, pilha, lista, ...). Você poderá implementar a estrutura de
 		 * dados que achar mais adequada para o trabalho. 
 		 */
+		int capacidade;
+		void * valor;
+		// void * valor = malloc(sizeof(capacidade * (*((int *)valor)) );
 
 	} arranjo_t;
 
