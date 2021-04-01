@@ -20,6 +20,9 @@
 		 */
 		int capacidade;
 		void * valor;
+		int begin_;
+		int size_;
+    	int end_;
 		// void * valor = malloc(sizeof(capacidade * (*((int *)valor)) );
 
 	} arranjo_t;

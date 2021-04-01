@@ -18,7 +18,10 @@
 PUBLIC void arranjo_iniciar(arranjo_t * arranjo, int capacidade)
 {
 	/* Implemente se for usar. */
-	arranjo.capacidade = capacidade;
+	arranjo.capacidade = capacidade;	
+	arranjo.valor = malloc (sizeof(arranjo_t arranjo) * capacidade);		// precisa fazer cast?
+	arranjo.begin_ = arranjo.size_ = 0;
+    arranjo.end_ = -1;
 }
 
 /*============================================================================*
@@ -33,7 +36,7 @@ PUBLIC void arranjo_iniciar(arranjo_t * arranjo, int capacidade)
 PUBLIC void arranjo_destruir(arranjo_t * arranjo)
 {
 	/* Implemente se for usar. */
-	delete(arranjo.valor)
+	delete(arranjo.valor);
 	arranjo.capacidade = 0;
 }
 
@@ -53,7 +56,9 @@ PUBLIC void arranjo_colocar(arranjo_t * arranjo, void * elemento)
 	if (arranjo.arranjo_tamanho() == arranjo.capacidade){
 		return NULL;
 	} else {
-		arranjo.valor = elemento;
+		arranjo.end_ = ((arranjo.end_ + 1) % arranjo.capacidade);
+        arranjo.valor[arranjo.end_] = elemento;
+        arranjo.size_++;
 	}
 }
 
@@ -75,7 +80,9 @@ PUBLIC void * arranjo_retirar(arranjo_t * arranjo)
 	if ( arranjo_vazio() ){
 		return NULL;
 	} else {
-		elemento = arranjo.valor;
+		elemento = arranjo.valor(arranjo.end_);
+		arranjo.end_ --;
+		arranjo.size_ --;
 	}
 	/* Implemente se for usar. */
 
@@ -92,12 +99,28 @@ PUBLIC void * arranjo_retirar(arranjo_t * arranjo)
  * @param arranjo  Ponteiro de um arranjo.
  * @param valor    Elemento a ser removido.
  */
+
+PUBLIC void find(arranjo_t * arranjo, void * elemento){		// feito 
+	int i = 0;
+    while (i < arranjo.size_) {
+        if (arranjo.valor[i] == elemento) {
+            break;
+        }
+        i++;
+    }
+    return i;
+}
+
+
+
 PUBLIC void arranjo_remover(arranjo_t * arranjo, void * elemento)
 {
 	if ( arranjo_vazio() ){
 		return NULL;
 	} else {
-		arranjo.arranjo_retirar;
+		elemento = arranjo.valor(arranjo.find(arranjo_t * arranjo, void * elemento));
+		arranjo.end_ --;
+		arranjo.size_ --;
 	}
 	/* Implemente se for usar. */
 }
@@ -136,14 +159,6 @@ PUBLIC int arranjo_vazio(arranjo_t * arranjo)
 PUBLIC int arranjo_tamanho(arranjo_t * arranjo)
 {
 	/* Implemente se for usar. */
-	int cont = 0;
-	head = arranjo.valor;
-    struct arranjo_t* current = head;
-    while (current != NULL)
-    {
-        cont++;
-        current = current->next;
-    }
-    return cont;
+    return arranjo.size_;
 }
 
